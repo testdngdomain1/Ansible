@@ -1,0 +1,9 @@
+---
+- hosts: ansible
+  tasks:
+  - name: Build Docker Image using Dockerfile
+    command: docker build . -t 243684792514.dkr.ecr.ap-south-1.amazonaws.com/choduapp:DOCKER_TAG
+    args:
+      chdir: /opt/Docker/workspace/Kubernetes_SonarQube_Ansible_S3_Integration_Pipeline_Project
+  - name: Push Image to Private Repository
+    command: docker push 243684792514.dkr.ecr.ap-south-1.amazonaws.com/choduapp:DOCKER_TAG
